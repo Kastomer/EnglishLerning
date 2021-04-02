@@ -1,0 +1,24 @@
+.ofer {
+    margin: 160px auto;
+    display: flex;
+    justify-content: space-between;
+    // flex-wrap: wrap;
+
+    &__text-title {
+        max-width: 630px;
+        font-size: 40px;
+        line-height: 47px;
+        color: #000000;
+        margin-bottom: 40px;
+    }
+
+    &__text-main {
+        max-width: 367px;
+        font-size: 20px;
+        line-height: 31px;
+        color: #114455;
+    }
+    &__btn{
+        max-width: 230px;
+    }
+}

@@ -1,0 +1,18 @@
+section.header
+    - var type = true
+    - var classType = ""
+    if type
+        - classType ="header__wrap_light"
+    else
+       - classType ="header__wrap_darck"
+
+    .header__wrap(class = classType)
+        .header__logo 
+            if type 
+                img(src="/images/logo.png")
+            else 
+                img(src="/images/logo_darck.png")
+        ul.header__nav
+            li.header__nav-item Курсы
+            li.header__nav-item Преподаватели
+            li.header__nav-item Личный кабинет

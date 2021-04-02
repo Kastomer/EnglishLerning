@@ -1,0 +1,40 @@
+extends layout
+block head
+  link(rel='stylesheet', href='/assets/style.css')
+  link(rel="stylesheet", href="/assets/vendor.css")
+  //- link(rel='shortcut icon' href='./images/icon.png' type='image/png')
+block content
+  include header
+  section.ofer.wrap
+    .ofer__text
+      .ofer__text-title 
+        p Новая эфффективная методика изучения Английского языка
+      .ofer__text-main
+        p Запишись на  бесплатный урок прямо сейчас и получи бесплатную консультацию от наших носителей.
+      .ofer__btn.btn.btn_babl
+        p Записаться
+    .ofer__logo 
+      img(src="/images/offer_img.png", alt="")
+
+  section.advantages
+    .wrap
+      ul.advantages__bar 
+        li.advantages__bar-item
+          .advantages__bar-item_bg
+            img(src="/images/01.png", alt="")
+          p.advantages__bar-item-text Школа работает #[br] с 1998 года
+           
+        li.advantages__bar-item
+          .advantages__bar-item_bg
+            img(src="/images/02.png", alt="")
+          p.advantages__bar-item-text Преподаватели-носители языка
+
+        li.advantages__bar-item
+          .advantages__bar-item_bg
+            img(src="/images/03.png", alt="")
+          p.advantages__bar-item-text Мы выпустили больше тысячи учеников 
+
+        li.advantages__bar-item
+          .advantages__bar-item_bg
+            img(src="/images/04.png", alt="")
+          p.advantages__bar-item-text Гарантия результата

@@ -1,0 +1,38 @@
+$lg : 'max-width: 1200px';
+$minlg : 'min-width: 1200px';
+$md : 'max-width: 1023px';
+$sm : 'max-width: 768px';
+$esm : 'max-width: 374px';
+$min_sm : "min-width: 768px";
+
+@mixin _1200 {
+    @media ($lg){
+        @content;
+    }
+}
+
+@mixin _1200_ {
+    @media ($minlg){
+        @content;
+    }
+}
+@mixin _1023 {
+    @media ($md){
+        @content;
+    }
+}
+@mixin _768 {
+    @media ($sm){
+        @content;
+    }
+}
+@mixin _768_ {
+    @media ($min_sm){
+        @content;
+    }
+}
+@mixin _374 {
+    @media ($esm){
+        @content;
+    }
+}

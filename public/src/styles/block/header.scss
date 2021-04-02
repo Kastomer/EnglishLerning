@@ -1,0 +1,38 @@
+.header {
+    width: 100%;
+
+    &__wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 152px;
+        width: 80%;
+        margin: 0 auto;
+        padding: 0 10%;
+
+        &_light {
+            background: #E5E5E5;
+            color: #333;
+    
+        }
+    
+        &_darck {
+            background: #114455;
+            color: #fff;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+        max-width: 610px;
+        width: 100%;
+        font-size: 24px;
+        line-height: 28px;
+        flex-wrap: wrap;
+        margin: 0px 80px;
+    }
+    &__nav-item{
+        cursor: pointer;
+    }
+}
