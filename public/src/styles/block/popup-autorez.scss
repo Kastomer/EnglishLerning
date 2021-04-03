@@ -1,0 +1,56 @@
+.popup-autorez {
+
+    &__content {
+        max-width: 792px;
+        height: 390px;
+        background: #FFFFFF;
+        z-index: 3;
+        box-shadow: 0px 8px 15px rgba(219, 216, 216, 0.25);
+        border-radius: 18px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+
+    &__header {
+        text-align: center;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 24px;
+        color: #000000;
+    }
+
+    &__fields {
+        width: 90%;
+        margin: 24px auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    &__input {
+        opacity: 0.2;
+        border: 1px solid #2A2A30;
+        box-sizing: border-box;
+        border-radius: 4px;
+        height: 52px;
+        width: 350px;
+        margin-top: 12px;
+        padding: 0 0 0 23px;
+
+        &:first-child {
+            flex-grow: 2;
+            width: 100%;
+        }
+    }
+    &__btn{
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        margin: 0 auto;
+    }
+}

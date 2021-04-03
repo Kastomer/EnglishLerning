@@ -1,0 +1,45 @@
+.test-card {
+    max-width: 730px;
+    width: 100%;
+    min-height: 320px;
+    border-radius: 40px;
+    padding: 56px 0 0 56px;
+    background: #E3EDEE;
+    color: #114455;
+    font-family: "Roboto";
+    margin-right: 50px;
+
+    &:first-child {
+        background: #114455;
+        color: #FFF;
+    }
+
+    &__header {
+        font-weight: 500;
+        font-size: 36px;
+        line-height: 42px;
+    }
+
+    &__description {
+        font-weight: 300;
+        font-size: 16px;
+        max-width: 500px;
+        margin-top: 32px;
+        line-height: 28px;
+        font-family: "Roboto-tin";
+    }
+    &__row{
+        display: flex;
+        justify-content: flex-end;
+    }
+    &__btn{
+        display: block;
+        width: 48px;
+        height: 48px;
+        background: #C4C4C4;
+        border-radius: 50%;
+        text-align: center;
+        cursor: pointer;
+        margin: 64px 32px 0 0;
+    }
+}

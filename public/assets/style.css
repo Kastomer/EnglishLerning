@@ -386,6 +386,16 @@
   src: url(./styles/Rubik-Regular.woff) format("woff");
   font-weight: 500;
 }
+@font-face {
+  font-family: "Roboto";
+  src: url(./styles/Roboto-Medium.woff) format("woff");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Roboto-tin";
+  src: url(./styles/Roboto-Thin.woff) format("woff");
+  font-weight: 500;
+}
 .header {
   width: 100%;
 }
@@ -405,6 +415,9 @@
 .header__wrap_darck {
   background: #114455;
   color: #fff;
+}
+.header__logo {
+  cursor: pointer;
 }
 .header__nav {
   display: flex;
@@ -440,6 +453,7 @@
 }
 .ofer__btn {
   max-width: 230px;
+  margin-top: 40px;
 }
 
 .btn {
@@ -447,7 +461,6 @@
   font-size: 20px;
   line-height: 31px;
   color: #FFFFFF;
-  margin-top: 40px;
   width: 100%;
   height: 65px;
   display: flex;
@@ -456,6 +469,11 @@
 }
 .btn_babl {
   border-radius: 50px;
+}
+.btn_strong {
+  border: 1px solid #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 4px;
 }
 
 .advantages {
@@ -499,6 +517,128 @@
   order: 0;
   flex-grow: 0;
   margin: 12px 0 0 32px;
+}
+
+.tests {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 160px;
+}
+
+.test-card {
+  max-width: 730px;
+  width: 100%;
+  min-height: 320px;
+  border-radius: 40px;
+  padding: 56px 0 0 56px;
+  background: #E3EDEE;
+  color: #114455;
+  font-family: "Roboto";
+  margin-right: 50px;
+}
+.test-card:first-child {
+  background: #114455;
+  color: #FFF;
+}
+.test-card__header {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 42px;
+}
+.test-card__description {
+  font-weight: 300;
+  font-size: 16px;
+  max-width: 500px;
+  margin-top: 32px;
+  line-height: 28px;
+  font-family: "Roboto-tin";
+}
+.test-card__row {
+  display: flex;
+  justify-content: flex-end;
+}
+.test-card__btn {
+  display: block;
+  width: 48px;
+  height: 48px;
+  background: #C4C4C4;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  margin: 64px 32px 0 0;
+}
+
+.popup-fade {
+  display: none;
+}
+
+.popup-fade:before {
+  content: "";
+  background: rgba(17, 68, 85, 0.9);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.popup-close {
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  top: 25px;
+  right: 39px;
+}
+
+.popup-autorez__content {
+  max-width: 792px;
+  height: 390px;
+  background: #FFFFFF;
+  z-index: 3;
+  box-shadow: 0px 8px 15px rgba(219, 216, 216, 0.25);
+  border-radius: 18px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.popup-autorez__header {
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  color: #000000;
+}
+.popup-autorez__fields {
+  width: 90%;
+  margin: 24px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.popup-autorez__input {
+  opacity: 0.2;
+  border: 1px solid #2A2A30;
+  box-sizing: border-box;
+  border-radius: 4px;
+  height: 52px;
+  width: 350px;
+  margin-top: 12px;
+  padding: 0 0 0 23px;
+}
+.popup-autorez__input:first-child {
+  flex-grow: 2;
+  width: 100%;
+}
+.popup-autorez__btn {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
 }
 
 * {
