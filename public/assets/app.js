@@ -89,6 +89,30 @@ document.querySelectorAll(".popup-controll__content").forEach(function (wrap) {
 
 /***/ }),
 
+/***/ "./js/public/popupControllAdd.js":
+/*!***************************************!*\
+  !*** ./js/public/popupControllAdd.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js");
+document.querySelectorAll(".private-office__content").forEach(function (content) {
+  var popup = content.querySelector(".popup-controll-create");
+  var popupFade = popup.querySelector(".popup-fade_control");
+  var popupClose = popup.querySelector(".popup-close");
+
+  content.querySelector(".test-card-person_control-add").onclick = function () {
+    $(popupFade).fadeIn();
+    window.scrollTo(0, 0);
+    $(popupClose).click(function () {
+      $(popupFade).fadeOut();
+      return false;
+    });
+  };
+});
+
+/***/ }),
+
 /***/ "./js/public/script.js":
 /*!*****************************!*\
   !*** ./js/public/script.js ***!
@@ -103,6 +127,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _autorez_togl__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_autorez_togl__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _hendlAddQuestions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hendlAddQuestions */ "./js/public/hendlAddQuestions.js");
 /* harmony import */ var _hendlAddQuestions__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_hendlAddQuestions__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _popupControllAdd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./popupControllAdd */ "./js/public/popupControllAdd.js");
+/* harmony import */ var _popupControllAdd__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_popupControllAdd__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 

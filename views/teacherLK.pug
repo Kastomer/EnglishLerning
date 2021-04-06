@@ -25,7 +25,7 @@ block content
                 .private-office__test-open
                     p.private-office__test-open-title Редактировать тесты
                     .private-office__test-open-wrap.private-office__test-open-wrap_control.mt-4
-                        .test-card-person.test-card-person_control.mr-6
+                        .test-card-person.test-card-person_control.test-card-person_control-add.mr-6
                             p.test-card-person__title Создать тесты
                             img(src="/images/edit.png", alt="").test-card-person-complite__img.test-card-person-complite__img_control
                         .test-card-person.test-card-person_control.mr-6
@@ -59,25 +59,26 @@ block content
                         .test-card-person-complite__info
                             img(src="/images/delet.png", alt="").p.test-card-person-complite__img
                             p.test-card-person-complite__status Выполнен
-        .popup.popup-controll.popup-controll-create
-            .popup-fade_control 
-                .popup-controll__content 
-                    .popup-controll__header
-                        p Создание теста
-                    .popup-close
-                        p ❌
-                    .popup-controll__inputs-wrap.mt-7
-                        .popup-controll__inputs-row 
-                            input(type="text" placeholder="Вопрос").popup-controll__input.popup-controll__input_question
-                            img(src="/images/Arrow - Right.png", alt="").popup-controll__img
-                            input(type="text" placeholder="Ответ").popup-controll__input.popup-controll__input_answer
-                    .popup-controll__btn-wrap
-                        .popup-controll__btn.btn.btn_strong
-                            p Создать  ➔
-                        .popup-controll__btn.btn.btn_strong.popup-controll__btn_plas
-                            p +
-                        .popup-controll__btn.btn.btn_strong.popup-controll__btn_mines
-                            p -
+            .popup.popup-controll.popup-controll-create
+                .popup-fade_control 
+                    .popup-controll__content 
+                        .popup-controll__header
+                            p Создание теста
+                        .popup-close
+                            p ❌
+                        .popup-controll__inputs-wrap.mt-7
+                            .popup-controll__inputs-row 
+                                input(type="text" placeholder="Вопрос").popup-controll__input.popup-controll__input_question
+                                img(src="/images/Arrow - Right.png", alt="").popup-controll__img
+                                input(type="text" placeholder="Ответ").popup-controll__input.popup-controll__input_answer
+                        .popup-controll__btn-wrap
+                            .popup-controll__btn.btn.btn_strong
+                                p Создать  ➔
+                            .popup-controll__btn.btn.btn_strong.popup-controll__btn_plas
+                                p +
+                            .popup-controll__btn.btn.btn_strong.popup-controll__btn_mines
+                                p -
+                            
                         
 block footer
     script(src="/assets/vendor.js")
