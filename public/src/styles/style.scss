@@ -2,6 +2,7 @@
 @import "./utils/m.scss";
 @import "./utils/p.scss";
 @import "./fonts.scss";
+@import "./mixin-adaptiv.scss";
 // _____________________________________
 @import "./block/header.scss";
 @import "./block/offer.scss";
@@ -11,7 +12,11 @@
 @import "./block/test-card.scss";
 @import "./block/popup.scss";
 @import "./block/popup-autorez.scss";
-
+@import "./block/showTest.scss";
+@import "./block/private-office.scss";
+@import "./block/test-card-person.scss";
+@import "./block/test-card-person-complite.scss";
+@import "./block/popup-controll.scss";
 
 
 * {

@@ -13,6 +13,7 @@
         left: 0;
         right: 0;
         margin: auto;
+        transition: .3s;
     }
 
     &__header {
@@ -30,6 +31,15 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        
+
+        &_authorization {
+            display: none;
+            margin: 24px auto;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     &__input {
@@ -46,11 +56,24 @@
             flex-grow: 2;
             width: 100%;
         }
+
+        &_authorization {
+            opacity: 0.2;
+            border: 1px solid #2A2A30;
+            box-sizing: border-box;
+            border-radius: 4px;
+            height: 52px;
+            margin-top: 12px;
+            padding: 0 0 0 23px;
+            width: 90%;
+        }
     }
-    &__btn{
+
+    &__btn {
         display: flex;
         justify-content: space-between;
         width: 90%;
         margin: 0 auto;
+        transition: .3s;
     }
 }

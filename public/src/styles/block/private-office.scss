@@ -1,0 +1,109 @@
+.private-office {
+
+    &__title {
+        margin-top: 152px;
+        font-weight: bold;
+        font-size: 48px;
+        line-height: 57px;
+        color: #000000;
+    }
+
+    &__content {
+        background: linear-gradient(105.04deg, #E3EDEE 0.55%, #CEF1F3 96.6%);
+        border-radius: 40px;
+        padding: 112px 40px 40px 80px;
+        margin: 64px 0;
+
+        display: flex;
+        justify-content: space-between;
+
+        @include _1280{
+            flex-direction: column;
+        }
+    }
+
+    // левая часть лк дробный блок
+    &__person {
+        display: flex;
+        max-width: 430px;
+        width: 100%;
+        justify-content: space-between;
+    }
+    &__person-info{
+        margin-right: 48px;
+    }
+    &__person-img {
+        max-width: 88px;
+        width: 100%;
+        height: 110px;
+        display: block;
+    }
+
+    &__person-FIO {
+        font-weight: 500;
+        font-size: 26px;
+        line-height: 31px;
+        color: #333333;
+    }
+
+    &__person-text {
+        font-size: 16px;
+        line-height: 19px;
+        color: #114455;
+        display: flex;
+    }
+
+    &__icon {
+        max-width: 16px;
+        margin-right: 8px;
+    }
+
+    &__test-open {
+        margin-top: 144px;
+    }
+
+    &__test-open-title {
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 31px;
+        color: #000000;
+    }
+
+    &__test-open-wrap {
+        display: flex;
+
+        &_control{
+            flex-direction: column;
+        }
+    }
+
+    // пройденные тесты - цельный блок
+    &__test-list {
+        max-width: calc(100% - 490px);
+        width: 100%;
+        background: #D3E3FB;
+        border-radius: 40px;
+        padding: 32px 28px 56px;
+
+        @include _1280{
+            max-width: none;
+            width: 90%;
+            margin-top: 40px;
+        }
+    }
+
+    &__test-list-title {
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 31px;
+        color: #000000;
+    }
+
+    &__test-list-wrap {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+}

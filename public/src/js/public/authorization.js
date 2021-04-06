@@ -1,15 +1,22 @@
-document.querySelectorAll(".btn-entry").forEach(btn => {
-
+document.querySelectorAll(".header").forEach(hed => {
+    const btn = hed.querySelector(".btn-entry");
     const url = btn.dataset.url;
+    const popupFade = hed.querySelector(".popup-fade");
+    const popupClose = hed.querySelector(".popup-close");
+
+
     btn.onclick = () => {
         if (url === "/") {
 
-            $('.popup-fade').fadeIn();
+            $(popupFade).fadeIn();
+            window.scrollTo(0, 0);
 
-            $('.popup-close').click(function () {
+            $(popupClose).click(function () {
                 $(this).parents('.popup-fade').fadeOut();
                 return false;
             });
+
+
         } else {
             return;
         }

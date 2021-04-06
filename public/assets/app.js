@@ -9,19 +9,81 @@ var app;
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js");
-document.querySelectorAll(".btn-entry").forEach(function (btn) {
+document.querySelectorAll(".header").forEach(function (hed) {
+  var btn = hed.querySelector(".btn-entry");
   var url = btn.dataset.url;
+  var popupFade = hed.querySelector(".popup-fade");
+  var popupClose = hed.querySelector(".popup-close");
 
   btn.onclick = function () {
     if (url === "/") {
-      $('.popup-fade').fadeIn();
-      $('.popup-close').click(function () {
+      $(popupFade).fadeIn();
+      window.scrollTo(0, 0);
+      $(popupClose).click(function () {
         $(this).parents('.popup-fade').fadeOut();
         return false;
       });
     } else {
       return;
     }
+  };
+});
+
+/***/ }),
+
+/***/ "./js/public/autorez-togl.js":
+/*!***********************************!*\
+  !*** ./js/public/autorez-togl.js ***!
+  \***********************************/
+/***/ (() => {
+
+autorezTogle = function autorezTogle(elHide, elShow) {
+  elHide.style.display = "none";
+  elHide.classList.remove("".concat(elHide.classList[0], "_active"));
+  elShow.style.display = "flex";
+  elShow.classList.add("".concat(elShow.classList[0], "_active"));
+};
+
+document.querySelectorAll(".popup-autorez__content").forEach(function (content) {
+  var login = content.querySelector(".popup-autorez__btn_autorez");
+  var regis = content.querySelector(".popup-autorez__btn_regis");
+  var loginContent = content.querySelector(".popup-autorez__fields_authorization");
+  var regisContent = content.querySelector(".popup-autorez__fields");
+
+  login.onclick = function () {
+    autorezTogle(regisContent, loginContent);
+    content.style.height = "330px";
+    document.querySelector(".popup-autorez__header").querySelector("p").innerHTML = "Авторизация";
+  };
+
+  regis.onclick = function () {
+    autorezTogle(loginContent, regisContent);
+    content.style.height = "390px";
+    document.querySelector(".popup-autorez__header").querySelector("p").innerHTML = "Регистрация";
+  };
+});
+
+/***/ }),
+
+/***/ "./js/public/hendlAddQuestions.js":
+/*!****************************************!*\
+  !*** ./js/public/hendlAddQuestions.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js");
+document.querySelectorAll(".popup-controll__content").forEach(function (wrap) {
+  var plas = wrap.querySelector(".popup-controll__btn_plas");
+  var mines = wrap.querySelector(".popup-controll__btn_mines");
+
+  plas.onclick = function () {
+    $(".popup-controll__inputs-wrap").append("<div class=\"popup-controll__inputs-row\"> <input class=\"popup-controll__input popup-controll__input_question\" type=\"text\" placeholder=\"\u0412\u043E\u043F\u0440\u043E\u0441\" /><img class=\"popup-controll__img\" src=\"/images/Arrow - Right.png\" alt=\"\" /><input class=\"popup-controll__input popup-controll__input_answer\" type=\"text\" placeholder=\"\u041E\u0442\u0432\u0435\u0442\" /></div>");
+  };
+
+  mines.onclick = function () {
+    var len = document.querySelector(".popup-controll__inputs-wrap").childNodes.length;
+    document.querySelector(".popup-controll__inputs-wrap").childNodes[len - 1].remove();
+    ;
   };
 });
 
@@ -37,6 +99,12 @@ document.querySelectorAll(".btn-entry").forEach(function (btn) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _authorization__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./authorization */ "./js/public/authorization.js");
 /* harmony import */ var _authorization__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_authorization__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _autorez_togl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./autorez-togl */ "./js/public/autorez-togl.js");
+/* harmony import */ var _autorez_togl__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_autorez_togl__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _hendlAddQuestions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hendlAddQuestions */ "./js/public/hendlAddQuestions.js");
+/* harmony import */ var _hendlAddQuestions__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_hendlAddQuestions__WEBPACK_IMPORTED_MODULE_2__);
+
+
 
 
 /***/ })

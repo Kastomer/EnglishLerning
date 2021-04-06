@@ -4,6 +4,9 @@ block head
   link(rel="stylesheet", href="/assets/vendor.css")
   //- link(rel='shortcut icon' href='./images/icon.png' type='image/png')
 block content
+  - var type = true
+  - var classType = ""
+  - var urlforscripts = "/"
   include header
   section.ofer.wrap
     .ofer__text
@@ -53,15 +56,9 @@ block content
       .test-card__row
         .test-card__btn
           img(src="/images/Group 64.png", alt="")
+  - var type = false
+  include header
   
-  section.header
-    .header__wrap.header__wrap_darck
-        .header__logo 
-          img(src="/images/logo_darck.png")
-        ul.header__nav
-          li.header__nav-item Курсы
-          li.header__nav-item Преподаватели
-          li.header__nav-item Личный кабинет
 
 block footer
     script(src="/assets/vendor.js")

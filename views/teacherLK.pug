@@ -1,0 +1,84 @@
+extends layout
+block head
+  link(rel='stylesheet', href='/assets/style.css')
+  link(rel="stylesheet", href="/assets/vendor.css")
+
+block content
+    - var type = false
+    - var classType = ""
+    - var urlforscripts = "/teacher-lk"
+    include header
+     
+    section.private-office.wrap
+        p.private-office__title Личный кабинет студента
+
+        .private-office__content 
+            .private-office__person-info
+                .private-office__person
+                    img(src="/images/img-profile.png", alt="").private-office__person-img
+                    .private-office__person-description.ml-4 
+                        p.private-office__person-FIO Иванов Иван Иванович
+                        p.private-office__person-text.mt-1 преподаватель
+                        .private-office__person-text.mt-1 
+                            img(src="/images/mail 1.png", alt="").private-office__icon
+                            p mazafaka228@mail.ru
+                .private-office__test-open
+                    p.private-office__test-open-title Редактировать тесты
+                    .private-office__test-open-wrap.private-office__test-open-wrap_control.mt-4
+                        .test-card-person.test-card-person_control.mr-6
+                            p.test-card-person__title Создать тесты
+                            img(src="/images/edit.png", alt="").test-card-person-complite__img.test-card-person-complite__img_control
+                        .test-card-person.test-card-person_control.mr-6
+                            p.test-card-person__title Удалить тесты
+                            img(src="/images/delet.png", alt="").test-card-person-complite__img.test-card-person-complite__img_control
+
+
+            .private-office__test-list
+                p.private-office__test-list-title Пройденные тесты
+                .private-office__test-list-wrap
+                    .test-card-person-complite.mt-4
+                        .test-card-person-complite__description 
+                            p.test-card-person-complite__title Название теста 1
+                            p.test-card-person-complite__FIO Иванов Иван Иванович
+                        .test-card-person-complite__info
+                            img(src="/images/delet.png", alt="").p.test-card-person-complite__img
+                            p.test-card-person-complite__status Выполнен
+
+                    .test-card-person-complite.mt-4
+                        .test-card-person-complite__description 
+                            p.test-card-person-complite__title Название теста 2
+                            p.test-card-person-complite__FIO Иванов Иван Иванович
+                        .test-card-person-complite__info
+                            img(src="/images/delet.png", alt="").p.test-card-person-complite__img
+                            p.test-card-person-complite__status Выполнен
+
+                    .test-card-person-complite.mt-4
+                        .test-card-person-complite__description 
+                            p.test-card-person-complite__title Название теста 3
+                            p.test-card-person-complite__FIO Иванов Иван Иванович
+                        .test-card-person-complite__info
+                            img(src="/images/delet.png", alt="").p.test-card-person-complite__img
+                            p.test-card-person-complite__status Выполнен
+        .popup.popup-controll.popup-controll-create
+            .popup-fade_control 
+                .popup-controll__content 
+                    .popup-controll__header
+                        p Создание теста
+                    .popup-close
+                        p ❌
+                    .popup-controll__inputs-wrap.mt-7
+                        .popup-controll__inputs-row 
+                            input(type="text" placeholder="Вопрос").popup-controll__input.popup-controll__input_question
+                            img(src="/images/Arrow - Right.png", alt="").popup-controll__img
+                            input(type="text" placeholder="Ответ").popup-controll__input.popup-controll__input_answer
+                    .popup-controll__btn-wrap
+                        .popup-controll__btn.btn.btn_strong
+                            p Создать  ➔
+                        .popup-controll__btn.btn.btn_strong.popup-controll__btn_plas
+                            p +
+                        .popup-controll__btn.btn.btn_strong.popup-controll__btn_mines
+                            p -
+                        
+block footer
+    script(src="/assets/vendor.js")
+    script(src="/assets/app.js")

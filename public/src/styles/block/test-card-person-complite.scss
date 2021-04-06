@@ -1,0 +1,44 @@
+.test-card-person-complite {
+    background: #FAFAFA;
+    border-radius: 20px;
+    padding: 24px 32px;
+    max-width: 360px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    @include _1280{
+        max-width: none;
+    }
+    &__title {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        color: #000000;
+        text-align: center;
+    }
+
+    &__FIO {
+        font-size: 10px;
+        line-height: 12px;
+        color: #000000;
+        margin-top: 24px;
+
+    }
+
+    &__img{
+        width: 22px;
+        height: 22px;
+        float: right;
+        margin-bottom: 20px;
+        cursor: pointer;
+
+        &_control{
+            margin-bottom: 0;
+        }
+    }
+    &__status{
+        font-size: 12px;
+    }
+}

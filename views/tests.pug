@@ -1,0 +1,16 @@
+extends layout
+block head
+  link(rel='stylesheet', href='/assets/style.css')
+  link(rel="stylesheet", href="/assets/vendor.css")
+
+block content
+    - var type = false
+    - var classType = ""
+    - var urlforscripts = "/tests"
+    include header
+
+    include showTest
+
+block footer
+    script(src="/assets/vendor.js")
+    script(src="/assets/app.js")

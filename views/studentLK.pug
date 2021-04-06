@@ -1,0 +1,72 @@
+extends layout
+block head
+  link(rel='stylesheet', href='/assets/style.css')
+  link(rel="stylesheet", href="/assets/vendor.css")
+
+block content
+    - var type = false
+    - var classType = ""
+    - var urlforscripts = "/student-lk"
+    include header
+     
+    section.private-office.wrap
+        p.private-office__title Личный кабинет студента
+
+        .private-office__content 
+            .private-office__person-info
+                .private-office__person
+                    img(src="/images/img-profile.png", alt="").private-office__person-img
+                    .private-office__person-description.ml-4 
+                        p.private-office__person-FIO Иванов Иван Иванович
+                        p.private-office__person-text.mt-1 студент
+                        p.private-office__person-text.mt-1 POKS - 45
+                        .private-office__person-text.mt-1 
+                            img(src="/images/mail 1.png", alt="").private-office__icon
+                            p mazafaka228@mail.ru
+                .private-office__test-open
+                    p.private-office__test-open-title Доступные тесты
+                    .private-office__test-open-wrap.mt-4
+                        .test-card-person.mr-6
+                            p.test-card-person__title Название теста 1
+                            img(src="/images/Group 64.png", alt="").test-card-person__btn
+                        .test-card-person.mr-6
+                            p.test-card-person__title Название теста 2
+                            img(src="/images/Group 64.png", alt="").test-card-person__btn
+
+
+            .private-office__test-list
+                p.private-office__test-list-title Пройденные тесты
+                .private-office__test-list-wrap
+                    .test-card-person.mt-4.mr-1
+                        p.test-card-person__title Название теста 2
+                        p.test-card-person__raitng Оценка: 5
+                    
+                    .test-card-person.mt-4.mr-1
+                        p.test-card-person__title Название теста 2
+                        p.test-card-person__raitng Оценка: 5
+                    
+                    .test-card-person.mt-4.mr-1
+                        p.test-card-person__title Название теста 2
+                        p.test-card-person__raitng Оценка: 5
+                    
+                    .test-card-person.mt-4.mr-1
+                        p.test-card-person__title Название теста 2
+                        p.test-card-person__raitng Оценка: 5
+                    
+                    .test-card-person.mt-4.mr-1
+                        p.test-card-person__title Название теста 2
+                        p.test-card-person__raitng Оценка: 5
+                    
+                    .test-card-person.mt-4.mr-1
+                        p.test-card-person__title Название теста 2
+                        p.test-card-person__raitng Оценка: 5
+                    
+                    .test-card-person.mt-4
+                        p.test-card-person__title Название теста 2
+                        p.test-card-person__raitng Оценка: 5
+                
+
+
+block footer
+    script(src="/assets/vendor.js")
+    script(src="/assets/app.js")
