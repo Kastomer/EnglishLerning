@@ -10,7 +10,7 @@ block content
     include header
      
     section.private-office.wrap
-        p.private-office__title Личный кабинет студента
+        p.private-office__title Личный кабинет препадавателя
 
         .private-office__content 
             .private-office__person-info
@@ -25,10 +25,19 @@ block content
                 .private-office__test-open
                     p.private-office__test-open-title Редактировать тесты
                     .private-office__test-open-wrap.private-office__test-open-wrap_control.mt-4
+                        
                         .test-card-person.test-card-person_control.test-card-person_control-add.mr-6
                             p.test-card-person__title Создать тесты
                             img(src="/images/edit.png", alt="").test-card-person-complite__img.test-card-person-complite__img_control
+
                         .test-card-person.test-card-person_control.mr-6
+                            p.test-card-person__title Загрузить тесты
+                            label.test-card-person__upload
+                                input(type='file').test-card-person-complite__file
+                                img(src="/images/Group 67.png", alt="").test-card-person-complite__img.test-card-person-complite__img_control
+
+                        
+                        .test-card-person.test-card-person_control.test-card-person_control-del.mr-6
                             p.test-card-person__title Удалить тесты
                             img(src="/images/delet.png", alt="").test-card-person-complite__img.test-card-person-complite__img_control
 
@@ -78,7 +87,42 @@ block content
                                 p +
                             .popup-controll__btn.btn.btn_strong.popup-controll__btn_mines
                                 p -
-                            
+
+            .popup.popup-controll.popup-controll-delite
+                .popup-fade_delite.popup-fade_control
+                    .popup-controll__content 
+                        .popup-controll__header
+                            p Улаление теста
+                        .popup-close
+                            p ❌
+                        .popup-controll__tests-wrap.mt-7
+                            .tests-to-delite 
+                                p.tests-to-delite__name Тест №1
+                                img(src="/images/delet.png", alt="").tests-to-delite__icon
+
+                            .tests-to-delite 
+                                p.tests-to-delite__name Тест №1
+                                img(src="/images/delet.png", alt="").tests-to-delite__icon
+
+                            .tests-to-delite 
+                                p.tests-to-delite__name Тест №1
+                                img(src="/images/delet.png", alt="").tests-to-delite__icon
+
+                            .tests-to-delite 
+                                p.tests-to-delite__name Тест №1
+                                img(src="/images/delet.png", alt="").tests-to-delite__icon
+
+                            .tests-to-delite 
+                                p.tests-to-delite__name Тест №1
+                                img(src="/images/delet.png", alt="").tests-to-delite__icon
+
+                            .tests-to-delite 
+                                p.tests-to-delite__name Тест №1
+                                img(src="/images/delet.png", alt="").tests-to-delite__icon
+
+                            .tests-to-delite 
+                                p.tests-to-delite__name Тест №1
+                                img(src="/images/delet.png", alt="").tests-to-delite__icon
                         
 block footer
     script(src="/assets/vendor.js")

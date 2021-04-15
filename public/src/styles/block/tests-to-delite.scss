@@ -1,0 +1,28 @@
+.tests-to-delite {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 300px;
+    border: 1px solid #2a2a3023;
+    box-sizing: border-box;
+    border-radius: 4px;
+    max-width: 270px;
+    width: 100%;
+    margin-top: 24px;
+    
+
+    &__name {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: #000000;
+        opacity: 0.5;
+        padding: 17px 0 17px 27px;
+    }
+    &__icon{
+        width: 22px;
+        height: 22px;   
+        padding: 17px 17px 17px 0;
+        
+    }
+}

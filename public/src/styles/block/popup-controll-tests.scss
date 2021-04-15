@@ -1,0 +1,21 @@
+.popup-controll-tests {
+
+
+    &__radio-answer {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+
+        &_false {
+            background: #F17D7D;
+        }
+
+        &_true {
+            background: #5FE67F;
+        }
+
+        &_none {
+            background: rgb(197, 197, 197);
+        }
+    }
+}

@@ -1,4 +1,4 @@
-autorezTogle = (elHide, elShow) =>{
+const autorezTogle = (elHide, elShow) =>{
     elHide.style.display = "none";
     elHide.classList.remove(`${elHide.classList[0]}_active`);
 

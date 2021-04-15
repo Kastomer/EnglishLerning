@@ -4,7 +4,6 @@ document.querySelectorAll(".header").forEach(hed => {
     const popupFade = hed.querySelector(".popup-fade");
     const popupClose = hed.querySelector(".popup-close");
 
-
     btn.onclick = () => {
         if (url === "/") {
 

@@ -37,7 +37,7 @@ document.querySelectorAll(".header").forEach(function (hed) {
   \***********************************/
 /***/ (() => {
 
-autorezTogle = function autorezTogle(elHide, elShow) {
+var autorezTogle = function autorezTogle(elHide, elShow) {
   elHide.style.display = "none";
   elHide.classList.remove("".concat(elHide.classList[0], "_active"));
   elShow.style.display = "flex";
@@ -76,15 +76,42 @@ document.querySelectorAll(".popup-controll__content").forEach(function (wrap) {
   var plas = wrap.querySelector(".popup-controll__btn_plas");
   var mines = wrap.querySelector(".popup-controll__btn_mines");
 
-  plas.onclick = function () {
-    $(".popup-controll__inputs-wrap").append("<div class=\"popup-controll__inputs-row\"> <input class=\"popup-controll__input popup-controll__input_question\" type=\"text\" placeholder=\"\u0412\u043E\u043F\u0440\u043E\u0441\" /><img class=\"popup-controll__img\" src=\"/images/Arrow - Right.png\" alt=\"\" /><input class=\"popup-controll__input popup-controll__input_answer\" type=\"text\" placeholder=\"\u041E\u0442\u0432\u0435\u0442\" /></div>");
-  };
+  if (plas != null) {
+    plas.onclick = function () {
+      $(".popup-controll__inputs-wrap").append("<div class=\"popup-controll__inputs-row\"> <input class=\"popup-controll__input popup-controll__input_question\" type=\"text\" placeholder=\"\u0412\u043E\u043F\u0440\u043E\u0441\" /><img class=\"popup-controll__img\" src=\"/images/Arrow - Right.png\" alt=\"\" /><input class=\"popup-controll__input popup-controll__input_answer\" type=\"text\" placeholder=\"\u041E\u0442\u0432\u0435\u0442\" /></div>");
+    };
 
-  mines.onclick = function () {
-    var len = document.querySelector(".popup-controll__inputs-wrap").childNodes.length;
-    document.querySelector(".popup-controll__inputs-wrap").childNodes[len - 1].remove();
-    ;
-  };
+    mines.onclick = function () {
+      var len = document.querySelector(".popup-controll__inputs-wrap").childNodes.length;
+      if (len - 1 < 1) return false;
+      document.querySelector(".popup-controll__inputs-wrap").childNodes[len - 1].remove();
+      ;
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./js/public/openTests.js":
+/*!********************************!*\
+  !*** ./js/public/openTests.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js");
+document.querySelectorAll(".openTests").forEach(function (tests) {
+  tests.querySelectorAll(".test-card-person").forEach(function (testCard) {
+    testCard.querySelector(".test-card-person__btn").onclick = function () {
+      var popup = testCard.querySelector(".popup-fade_tests");
+      var popupClose = testCard.querySelector(".popup-close");
+      $(popup).fadeIn();
+      window.scrollTo(0, 0);
+      $(popupClose).click(function () {
+        $(popup).fadeOut();
+        return false;
+      });
+    };
+  });
 });
 
 /***/ }),
@@ -97,15 +124,28 @@ document.querySelectorAll(".popup-controll__content").forEach(function (wrap) {
 
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js");
 document.querySelectorAll(".private-office__content").forEach(function (content) {
-  var popup = content.querySelector(".popup-controll-create");
-  var popupFade = popup.querySelector(".popup-fade_control");
-  var popupClose = popup.querySelector(".popup-close");
+  var popupC = content.querySelector(".popup-controll-create");
+  if (popupC == null) return;
+  var popupD = content.querySelector(".popup-controll-delite");
+  var popupFadeAdd = popupC.querySelector(".popup-fade_control") || undefined;
+  var popupFadeDel = popupD.querySelector(".popup-fade_delite");
+  var popupCloseC = popupC.querySelector(".popup-close");
+  var popupCloseD = popupD.querySelector(".popup-close");
 
   content.querySelector(".test-card-person_control-add").onclick = function () {
-    $(popupFade).fadeIn();
+    $(popupFadeAdd).fadeIn();
     window.scrollTo(0, 0);
-    $(popupClose).click(function () {
-      $(popupFade).fadeOut();
+    $(popupCloseC).click(function () {
+      $(popupFadeAdd).fadeOut();
+      return false;
+    });
+  };
+
+  content.querySelector(".test-card-person_control-del").onclick = function () {
+    $(popupFadeDel).fadeIn();
+    window.scrollTo(0, 0);
+    $(popupCloseD).click(function () {
+      $(popupFadeDel).fadeOut();
       return false;
     });
   };
@@ -129,6 +169,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hendlAddQuestions__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_hendlAddQuestions__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _popupControllAdd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./popupControllAdd */ "./js/public/popupControllAdd.js");
 /* harmony import */ var _popupControllAdd__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_popupControllAdd__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _openTests__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./openTests */ "./js/public/openTests.js");
+/* harmony import */ var _openTests__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_openTests__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 

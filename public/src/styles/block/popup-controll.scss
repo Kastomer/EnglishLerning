@@ -55,4 +55,11 @@
         margin-top: 48px;
         margin-right: 16px;
     }
+    &__tests-wrap{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 90%;
+        margin: 0 auto;
+    }
 }
