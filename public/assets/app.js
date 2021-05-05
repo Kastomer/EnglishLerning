@@ -11,14 +11,35 @@ var app;
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js");
 document.querySelectorAll(".header").forEach(function (hed) {
   var btn = hed.querySelector(".btn-entry");
+  var btnTeacher = hed.querySelector(".btn-entry__teacher");
   var url = btn.dataset.url;
+  var popup = hed.querySelector(".popup-autorez__content");
   var popupFade = hed.querySelector(".popup-fade");
   var popupClose = hed.querySelector(".popup-close");
 
   btn.onclick = function () {
     if (url === "/") {
+      popup.querySelector(".popup-autorez__fields-school").style.display = "none";
+      popup.style.maxWidth = "792px";
       $(popupFade).fadeIn();
       window.scrollTo(0, 0);
+      popup.dataset.user = "student";
+      $(popupClose).click(function () {
+        $(this).parents('.popup-fade').fadeOut();
+        return false;
+      });
+    } else {
+      return;
+    }
+  };
+
+  btnTeacher.onclick = function () {
+    if (url === "/") {
+      popup.querySelector(".popup-autorez__fields-school").style.display = "flex";
+      popup.style.maxWidth = "1200px";
+      $(popupFade).fadeIn();
+      window.scrollTo(0, 0);
+      popup.dataset.user = "teacher";
       $(popupClose).click(function () {
         $(this).parents('.popup-fade').fadeOut();
         return false;
@@ -37,29 +58,131 @@ document.querySelectorAll(".header").forEach(function (hed) {
   \***********************************/
 /***/ (() => {
 
-var autorezTogle = function autorezTogle(elHide, elShow) {
-  elHide.style.display = "none";
-  elHide.classList.remove("".concat(elHide.classList[0], "_active"));
-  elShow.style.display = "flex";
-  elShow.classList.add("".concat(elShow.classList[0], "_active"));
-};
-
 document.querySelectorAll(".popup-autorez__content").forEach(function (content) {
-  var login = content.querySelector(".popup-autorez__btn_autorez");
-  var regis = content.querySelector(".popup-autorez__btn_regis");
   var loginContent = content.querySelector(".popup-autorez__fields_authorization");
   var regisContent = content.querySelector(".popup-autorez__fields");
+  var regisWrap = content.querySelector(".popup-autorez__btn_regis");
+  var loginWrap = content.querySelector(".popup-autorez__btn_login");
+  var regisReqBtn = regisWrap.querySelector(".popup-autorez__btn_registr");
+  var loginReqBtn = loginWrap.querySelector(".popup-autorez__btn_autorez");
+  var logimReqBtnSwap = regisWrap.querySelector(".popup-autorez__btn_autorez");
+  var regisReqBtnSwap = loginWrap.querySelector(".popup-autorez__btn_registr");
+  var btnAddSchool = content.querySelector(".popup-autorez__fields-school-btn");
+  var btnBackSchool = content.querySelector(".popup-autorez__fields-school-btn_back");
+  var schoolSelectedContent = content.querySelector(".popup-autorez__fields-school-selected");
+  var schoolAddContent = content.querySelector(".popup-autorez__fields-school-add");
 
-  login.onclick = function () {
-    autorezTogle(regisContent, loginContent);
-    content.style.height = "330px";
+  regisReqBtn.onclick = function () {
+    var password = regisContent.pas.value == regisContent.pas_two.value ? regisContent.pas.value : alert("Пароли не совпадают");
+    var classRoom;
+    var url;
+    var sendData;
+
+    if (content.dataset.user == "student") {
+      url = "/regstudent";
+      classRoom = prompt("Укажите в каком кдассе вы находитесь", "7А");
+      sendData = {
+        lostname: regisContent.FIO.value.split(' ')[1],
+        firstname: regisContent.FIO.value.split(' ')[0],
+        patronymic: regisContent.FIO.value.split(' ')[2],
+        phone: regisContent.phone.value,
+        email: regisContent.mail.value,
+        password: password,
+        classRoom: classRoom
+      };
+
+      if (sendData.classRoom == undefined || sendData.password == undefined || sendData.lostname == undefined || sendData.firstname == undefined || sendData.patronymic == undefined || sendData.phone == undefined || sendData.email == undefined) {
+        alert("Данные для регистрации указынны не верно");
+        return;
+      }
+    } else {
+      url = "/regteacher"; // classRoom = prompt("Укажите усебное заведение", "МОБУ СОШ №3")
+
+      sendData = {
+        lostname: regisContent.FIO.value.split(' ')[1],
+        firstname: regisContent.FIO.value.split(' ')[0],
+        patronymic: regisContent.FIO.value.split(' ')[2],
+        phone: regisContent.phone.value,
+        email: regisContent.mail.value,
+        password: password,
+        schoolId: content.querySelector(".popup-autorez__fields-school-select").value
+      };
+    }
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify(sendData)
+    }).then(function (response) {
+      return response.json();
+    }).then(function (result) {
+      if (result.route) {
+        location.href = result.route;
+      } else {
+        alert("Что то пошло не так");
+        return;
+      }
+    });
+  };
+
+  loginReqBtn.onclick = function () {
+    var password = loginContent.pas.value;
+    var sendData = {
+      login: loginContent.login.value,
+      password: password
+    };
+
+    if (password == undefined || sendData.login == undefined) {
+      alert("Не верные данные для авторизации");
+      return;
+    }
+
+    var url = content.dataset.user == "student" ? "/logstudent" : "/logteacher";
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify(sendData)
+    }).then(function (response) {
+      return response.json();
+    }).then(function (result) {
+      if (result.route) {
+        location.href = result.route;
+      } else {
+        alert("Что то пошло не так");
+        return;
+      }
+    });
+  };
+
+  logimReqBtnSwap.onclick = function () {
+    regisContent.style.display = "none";
+    loginContent.style.display = "flex";
+    regisWrap.style.display = "none";
+    loginWrap.style.display = "flex"; // console.log(content.dataset.user);
+
     document.querySelector(".popup-autorez__header").querySelector("p").innerHTML = "Авторизация";
   };
 
-  regis.onclick = function () {
-    autorezTogle(loginContent, regisContent);
-    content.style.height = "390px";
+  regisReqBtnSwap.onclick = function () {
+    loginContent.style.display = "none";
+    regisContent.style.display = "flex";
+    loginWrap.style.display = "none";
+    regisWrap.style.display = "flex";
     document.querySelector(".popup-autorez__header").querySelector("p").innerHTML = "Регистрация";
+  };
+
+  btnAddSchool.onclick = function () {
+    schoolSelectedContent.style.display = "none";
+    schoolAddContent.style.display = "flex";
+  };
+
+  btnBackSchool.onclick = function () {
+    schoolSelectedContent.style.display = "flex";
+    schoolAddContent.style.display = "none";
   };
 });
 
@@ -127,7 +250,7 @@ document.querySelectorAll(".private-office__content").forEach(function (content)
   var popupC = content.querySelector(".popup-controll-create");
   if (popupC == null) return;
   var popupD = content.querySelector(".popup-controll-delite");
-  var popupFadeAdd = popupC.querySelector(".popup-fade_control") || undefined;
+  var popupFadeAdd = popupC.querySelector(".popup-fade_control");
   var popupFadeDel = popupD.querySelector(".popup-fade_delite");
   var popupCloseC = popupC.querySelector(".popup-close");
   var popupCloseD = popupD.querySelector(".popup-close");

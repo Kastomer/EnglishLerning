@@ -12,7 +12,7 @@ section.header
                 img(src="/images/logo_darck.png")
         ul.header__nav
             li.header__nav-item Тесты
-            li.header__nav-item Преподаватели
+            li.header__nav-item.btn-entry__teacher(data-url=urlforscripts) Преподаватели
             li.header__nav-item.btn-entry(data-url=urlforscripts) Личный кабинет
 
     .popup.popup-autorez
@@ -22,19 +22,39 @@ section.header
                     p Регистрация
                 .popup-close
                     p  ❌
-                form.popup-autorez__fields.popup-autorez__fields_active
+                form.popup-autorez__fields.popup-autorez__fields_active.popup-autorez__fields_registration
                     input(type="text" placeholder="ФИО" name="FIO").popup-autorez__input
                     input(type="text" placeholder="Телефон" name="phone").popup-autorez__input
                     input(type="text" placeholder="Email" name="mail").popup-autorez__input
                     input(type="password" placeholder="Пароль" name="pas").popup-autorez__input
                     input(type="password" placeholder="Повтор пароля" name="pas_two").popup-autorez__input
 
+                    .popup-autorez__fields-school
+                        .popup-autorez__fields-school-selected
+                            select.popup-autorez__fields-school-select
+                                each s in school
+                                    option(value=s.id) #{s.name} г.#{s.city} ул.#{s.street} д#{s.house} 
+                            .popup-autorez__fields-school-btn.btn.btn_strong
+                                p Добавить +
+                        .popup-autorez__fields-school-add
+                            input(type="text" placeholder="login" name="login").popup-autorez__input
+                            input(type="text" placeholder="login" name="login").popup-autorez__input
+                            input(type="text" placeholder="login" name="login").popup-autorez__input
+                            input(type="text" placeholder="login" name="login").popup-autorez__input
+                            .popup-autorez__fields-school-btn_back.btn.btn_strong
+                                p ❮
                 form.popup-autorez__fields_authorization
-                    input(type="text" placeholder="Email" name="mail").popup-autorez__input_authorization
+                    input(type="text" placeholder="login" name="login").popup-autorez__input_authorization
                     input(type="password" placeholder="Пароль" name="pas").popup-autorez__input_authorization
 
                 .popup-autorez__btn
-                    .popup-autorez__btn_autorez.btn.btn_strong
-                        p Войти ➔
-                    .popup-autorez__btn_regis.btn.btn_strong
-                        p Зарегистрироваться  ➔
+                    .popup-autorez__btn_regis
+                        .popup-autorez__btn_autorez.btn.btn_strong
+                            p Войти ➔
+                        .popup-autorez__btn_registr.btn.btn_strong
+                            p Зарегистрироваться  ➔
+                    .popup-autorez__btn_login
+                        .popup-autorez__btn_autorez.btn.btn_strong
+                            p Войти ➔
+                        .popup-autorez__btn_registr.btn.btn_strong
+                            p Зарегистрироваться  ➔

@@ -621,13 +621,12 @@
 }
 
 .popup-autorez__content {
-  max-width: 792px;
-  height: 390px;
+  max-width: 1200px;
   background: #FFFFFF;
   z-index: 3;
   box-shadow: 0px 8px 15px rgba(219, 216, 216, 0.25);
   border-radius: 18px;
-  position: absolute;
+  position: relative;
   top: 0;
   bottom: 0;
   left: 0;
@@ -642,6 +641,7 @@
   font-size: 24px;
   line-height: 24px;
   color: #000000;
+  padding-top: 24px;
 }
 .popup-autorez__fields {
   width: 90%;
@@ -656,6 +656,36 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.popup-autorez__fields-school {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 16px;
+  height: 52px;
+}
+.popup-autorez__fields-school-btn {
+  max-width: 350px;
+  height: 52px;
+}
+.popup-autorez__fields-school-btn_back {
+  height: 52px;
+}
+.popup-autorez__fields-school-select {
+  width: 100%;
+  margin-right: 16px;
+  padding-left: 16px;
+}
+.popup-autorez__fields-school-selected {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.popup-autorez__fields-school-add {
+  display: none;
+  justify-content: space-between;
+  width: 100%;
+  align-items: baseline;
 }
 .popup-autorez__input {
   opacity: 0.2;
@@ -685,6 +715,21 @@
   display: flex;
   justify-content: space-between;
   width: 90%;
+  margin: 0 auto;
+  transition: 0.3s;
+  padding-bottom: 32px;
+}
+.popup-autorez__btn_login {
+  display: none;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  transition: 0.3s;
+}
+.popup-autorez__btn_regis {
+  display: flex;
+  justify-content: center;
+  width: 100%;
   margin: 0 auto;
   transition: 0.3s;
 }

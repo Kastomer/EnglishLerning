@@ -4,8 +4,21 @@ const knex = require("../db.js");
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('teacherLK');
+router.get('/:id', async function (req, res, next) {
+  // res.render('teacherLK');
+  const id = req.params.id;
+  let teacher, school;
+  try {
+    [teacher] = await knex.select("*").from("teachers").where({id: id});
+    school = await knex.select("*").from('school');
+  } catch {
+    console.log(error);
+    next(error);
+  }
+  res.render('teacherLK',{
+    teacher: teacher,
+    school: school
+  });
 });
 
 router.post('/newtest', async function (req, res, next) {

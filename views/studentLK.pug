@@ -17,12 +17,12 @@ block content
                 .private-office__person
                     img(src="/images/img-profile.png", alt="").private-office__person-img
                     .private-office__person-description.ml-4 
-                        p.private-office__person-FIO Иванов Иван Иванович
+                        p.private-office__person-FIO #{student.lostname} #{student.firstname} #{student.patronymic} 
                         p.private-office__person-text.mt-1 студент
-                        p.private-office__person-text.mt-1 POKS - 45
+                        p.private-office__person-text.mt-1 #{student.class}
                         .private-office__person-text.mt-1 
                             img(src="/images/mail 1.png", alt="").private-office__icon
-                            p mazafaka228@mail.ru
+                            p #{student.email}
                 .private-office__test-open
                     p.private-office__test-open-title Доступные тесты
                     .private-office__test-open-wrap.openTests.mt-4

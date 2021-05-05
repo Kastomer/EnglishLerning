@@ -16,7 +16,7 @@ router.get('/', async function(req, res, next) {
 
 router.post('/regstudent', async function (req, res, next){
   const {lostname, firstname, patronymic, phone, email, password, classRoom, schoolId} = req.body;
-  
+  let studentId;
   try {
     await knex('students').insert([{
       lostname: lostname,
@@ -28,12 +28,13 @@ router.post('/regstudent', async function (req, res, next){
       class : classRoom,
       id_school: schoolId
     }]);
+    [studentId]= await knex.select("id").from("students").where({phone: phone});
     req.session.nameUser = "student";
-    res.end();
   } catch (error) {
     console.log(error);
     next(error);
   }
+  res.send({route: `/student-lk/${studentId.id}`}).end();
 });
 
 router.post('/logstudent', async function (req, res, next){
@@ -42,7 +43,7 @@ router.post('/logstudent', async function (req, res, next){
 
   if (user && password == user.password) {
     req.session.nameUser = "student";
-    res.end();
+    res.send({route: `/student-lk/${user.id}`}).end();
   }else {
     res.status(400).end();
   }
@@ -51,6 +52,8 @@ router.post('/logstudent', async function (req, res, next){
 router.post('/regteacher', async function (req, res, next){
   const {lostname, firstname, patronymic, phone, email, password, schoolId} = req.body;
   
+  let user;
+
   try {
     await knex('teachers').insert([{
       lostname: lostname,
@@ -62,7 +65,8 @@ router.post('/regteacher', async function (req, res, next){
       id_school: schoolId
     }]);
     req.session.nameUser = "teacher";
-    res.end();
+    [user]= await knex.select("id").from("teachers").where({phone: phone});
+    res.send({route: `/teacher-lk/${user.id}`}).end();
   } catch (error) {
     console.log(error);
     next(error);
