@@ -79,7 +79,7 @@ router.post('/logteacher', async function (req, res, next){
 
   if (user && password == user.password) {
     req.session.nameUser = "teacher";
-    res.end();
+    res.send({route: `/teacher-lk/${user.id}`}).end();
   }else {
     res.status(400).end();
   }

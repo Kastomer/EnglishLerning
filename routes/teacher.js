@@ -7,10 +7,13 @@ var router = express.Router();
 router.get('/:id', async function (req, res, next) {
   // res.render('teacherLK');
   const id = req.params.id;
-  let teacher, school;
+  let teacher, school, complite, tests;
   try {
     [teacher] = await knex.select("*").from("teachers").where({id: id});
     school = await knex.select("*").from('school');
+    [complite] = await knex.select('*').from('complite').join('students','id_student','=','students.id').join('tests','complite.id_test','=','tests.id').where('tests.id_teacher','=',id); //function(){this.on(.andOn('teachers.id','=',id)} join('teachers', 'tests.id_teacher','=','teachers.id')
+    [tests] = await knex.select('*').from('tests').where({id_teacher: id});
+    console.log(tests);
   } catch {
     console.log(error);
     next(error);
@@ -49,5 +52,23 @@ router.post('/newtest', async function (req, res, next) {
   }
   res.end();
 });
+
+router.post('/deletetest', async function (req, res, next) {
+  let {testId, src} = req.body;
+  try {
+    // fs.unlink(src, function(err){
+    //   if (err) {
+    //     console.log(err)
+    //   }else{
+    //     console.log('fail delete');
+    //   }
+    // });
+    await knex('complite').where({id_test: testId}).del();
+    await knex('tests').where({id: testId}).del();
+  } catch (error) {
+    next(error);
+  }
+  res.end();
+})
 
 module.exports = router;
