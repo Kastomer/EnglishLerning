@@ -1,5 +1,6 @@
 var express = require('express');
 const knex = require('../db');
+var fs = require('fs');
 var router = express.Router();
 
 
@@ -21,5 +22,50 @@ router.get('/:id', async function(req, res, next) {
     school: school
   });
 });
+
+router.post('/comtest', async function(req, res, next) {
+  const id_test = req.body.id_test;
+  let [{src}] = await knex.select('src').from('tests').where("id", id_test);
+  src = src.replace("\n","");
+  //src = src.split("."); src[0]+=".txt" "public/tests/Жопович.txt";
+  console.log(src);
+  let content = fs.readFileSync(src, "utf8");
+  console.log(content); // отправить на фронт
+  res.end();
+})
+
+router.post('/comtest1', async function(req, res, next) {
+  const id = req.body.id;
+  const id_test = req.body.id_test;
+  const prov = req.body.prov;
+  let [{src}] = await knex.select('src').from('tests').where("id", id_test);
+  src = src.replace("\n","");
+  let content = fs.readFileSync(src, "utf8");
+  content = content.split('"');
+  let engrus=[], result = [],estimation, g = 0, fal = '';
+  for (let i = 0; i < content.length; i++){
+    if (i % 2 != 0) {
+      engrus[g] = content[i];
+      g++;
+    }
+  };
+  for (let i in prov) {
+    let v = prov[i];
+    result.push(v);
+  }
+  g = 0;
+  for (let i = 1, x=0; i < engrus.length;x++, i+=2){
+    if (engrus[i] != result[x]) fal+=`${x} `; else g++;
+  }
+  if( g/(engrus.length / 2)>= 0.90) estimation = 5; else if(g/(engrus.length / 2)>= 0.75) estimation  = 4; else if (g/(engrus.length / 2)>= 0.60) estimation = 3; else estimation = 2;  
+  console.log(fal, g, estimation)// отправлять на фронт где ощибки и оценку
+
+  await knex('complite').insert([{
+    id_student: id,
+    id_test: id_test,
+    estimation: estimation
+  }]);
+  res.end();
+})
 
 module.exports = router;

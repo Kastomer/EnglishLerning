@@ -53,16 +53,17 @@ router.post('/newtest', async function (req, res, next) {
   res.end();
 });
 
-router.post('/deletetest', async function (req, res, next) {
-  let {testId, src} = req.body;
+router.post('/deletetest', async function (req, res, next) { // переделать получение путя с помощью бд по ид
+  let {testId} = req.body;
+  let [{src}] = await knex.select('src').from('tests').where("id", id_test);
   try {
-    // fs.unlink(src, function(err){
-    //   if (err) {
-    //     console.log(err)
-    //   }else{
-    //     console.log('fail delete');
-    //   }
-    // });
+    fs.unlink(src, function(err){
+      if (err) {
+        console.log(err)
+      }else{
+        console.log('fail delete');
+      }
+    });
     await knex('complite').where({id_test: testId}).del();
     await knex('tests').where({id: testId}).del();
   } catch (error) {
