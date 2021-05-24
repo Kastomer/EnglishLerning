@@ -90,34 +90,11 @@ block content
             .private-office__test-list
                 p.private-office__test-list-title Пройденные тесты
                 .private-office__test-list-wrap
-                    .test-card-person.mt-4.mr-1
-                        p.test-card-person__title Название теста 2
-                        p.test-card-person__raitng Оценка: 5
-                    
-                    .test-card-person.mt-4.mr-1
-                        p.test-card-person__title Название теста 2
-                        p.test-card-person__raitng Оценка: 5
-                    
-                    .test-card-person.mt-4.mr-1
-                        p.test-card-person__title Название теста 2
-                        p.test-card-person__raitng Оценка: 5
-                    
-                    .test-card-person.mt-4.mr-1
-                        p.test-card-person__title Название теста 2
-                        p.test-card-person__raitng Оценка: 5
-                    
-                    .test-card-person.mt-4.mr-1
-                        p.test-card-person__title Название теста 2
-                        p.test-card-person__raitng Оценка: 5
-                    
-                    .test-card-person.mt-4.mr-1
-                        p.test-card-person__title Название теста 2
-                        p.test-card-person__raitng Оценка: 5
-                    
-                    .test-card-person.mt-4
-                        p.test-card-person__title Название теста 2
-                        p.test-card-person__raitng Оценка: 5
-                
+                    each val in compliteTest
+                        .test-card-person.mt-4.mr-1
+                            p.test-card-person__title #{val.id_test}
+                            p.test-card-person__raitng Оценка: #{val.estimation}
+
 
 
 block footer

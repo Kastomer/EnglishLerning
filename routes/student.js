@@ -19,7 +19,9 @@ router.get('/:id', async function(req, res, next) {
   }
   res.render('studentLK',{
     student: student,
-    school: school
+    school: school,
+    tests: test,
+    compliteTest: complite
   });
 });
 
@@ -27,7 +29,6 @@ router.post('/comtest', async function(req, res, next) {
   const id_test = req.body.id_test;
   let [{src}] = await knex.select('src').from('tests').where("id", id_test);
   src = src.replace("\n","");
-  //src = src.split("."); src[0]+=".txt" "public/tests/Жопович.txt";
   console.log(src);
   let content = fs.readFileSync(src, "utf8");
   console.log(content); // отправить на фронт
