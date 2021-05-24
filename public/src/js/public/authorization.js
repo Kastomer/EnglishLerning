@@ -1,5 +1,8 @@
 document.querySelectorAll(".header").forEach(hed => {
     const btn = hed.querySelector(".btn-entry");
+    if (!btn) {
+        return;
+    }
     const btnTeacher = hed.querySelector(".btn-entry__teacher");
     const url = btn.dataset.url;
     const popup = hed.querySelector(".popup-autorez__content");

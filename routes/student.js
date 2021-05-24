@@ -74,11 +74,11 @@ router.post('/comtest', async function(req, res, next) {
   console.log(engrus, result);
   console.log(fal, g, estimation)// отправлять на фронт где ощибки и оценку
 
-  // await knex('complite').insert([{
-  //   id_student: id,
-  //   id_test: id_test,
-  //   estimation: estimation
-  // }]);
+  await knex('complite').insert([{
+    id_student: id,
+    id_test: id_test,
+    estimation: estimation
+  }]);
   res.json({fal: fal, estimation: estimation}).end();
 })
 

@@ -11,6 +11,11 @@ var app;
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js");
 document.querySelectorAll(".header").forEach(function (hed) {
   var btn = hed.querySelector(".btn-entry");
+
+  if (!btn) {
+    return;
+  }
+
   var btnTeacher = hed.querySelector(".btn-entry__teacher");
   var url = btn.dataset.url;
   var popup = hed.querySelector(".popup-autorez__content");
@@ -188,6 +193,79 @@ document.querySelectorAll(".popup-autorez__content").forEach(function (content) 
 
 /***/ }),
 
+/***/ "./js/public/create-test.js":
+/*!**********************************!*\
+  !*** ./js/public/create-test.js ***!
+  \**********************************/
+/***/ (() => {
+
+document.querySelectorAll('.popup-controll__content').forEach(function (creates) {
+  var btn = creates.querySelector('.popup-controll__btn_create');
+  var rus = [],
+      eng = [];
+  var name, clas;
+
+  btn.onclick = function () {
+    var id = btn.dataset.id;
+    creates.querySelectorAll('.popup-controll__input_question').forEach(function (engInput) {
+      eng.push(engInput.value);
+    });
+    creates.querySelectorAll('.popup-controll__input_answer').forEach(function (rusInput) {
+      rus.push(rusInput.value);
+    });
+    name = creates.querySelector('.popup-controll__input_name').value;
+    clas = creates.querySelector('.popup-controll__input_class').value;
+
+    if (eng.length == 0 || rus.length == 0 || name.length == 0 || clas.length == 0) {
+      alert('Не верные данные');
+      return;
+    }
+
+    console.log(rus, eng, name, clas);
+    fetch('/teacher-lk/newtest', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify({
+        rus: rus,
+        eng: eng,
+        name: name,
+        clas: clas,
+        id: id
+      })
+    });
+  };
+});
+
+/***/ }),
+
+/***/ "./js/public/delete-test.js":
+/*!**********************************!*\
+  !*** ./js/public/delete-test.js ***!
+  \**********************************/
+/***/ (() => {
+
+document.querySelectorAll('.delet__test').forEach(function (del) {
+  var id = del.dataset.id;
+
+  del.onclick = function () {
+    fetch('/teacher-lk/deletetest', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify({
+        testId: id
+      })
+    }).then(function () {
+      return location.reload();
+    });
+  };
+});
+
+/***/ }),
+
 /***/ "./js/public/hendlAddQuestions.js":
 /*!****************************************!*\
   !*** ./js/public/hendlAddQuestions.js ***!
@@ -223,6 +301,7 @@ document.querySelectorAll(".popup-controll__content").forEach(function (wrap) {
 
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js");
 document.querySelectorAll(".openTests").forEach(function (tests) {
+  var id = tests.dataset.id;
   tests.querySelectorAll(".test-card-person").forEach(function (testCard) {
     testCard.querySelector(".test-card-person__btn").onclick = function () {
       var popup = testCard.querySelector(".popup-fade_tests");
@@ -232,6 +311,51 @@ document.querySelectorAll(".openTests").forEach(function (tests) {
       $(popupClose).click(function () {
         $(popup).fadeOut();
         return false;
+      });
+    };
+
+    testCard.querySelector('.popup-controll__content-answer').onclick = function () {
+      var idTest = testCard.querySelector('.popup-controll__content-answer').dataset.id;
+      var estimation,
+          fail = [];
+      var rus = [];
+      testCard.querySelectorAll('.popup-controll__inputs-row').forEach(function (inputs) {
+        rus.push(inputs.querySelector('.popup-controll__input_answer').value);
+      }); // console.log(rus);
+
+      fetch('/student-lk/comtest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({
+          id_test: idTest,
+          prov: rus,
+          id: id
+        })
+      }).then(function (response) {
+        return response.json();
+      }).then(function (res) {
+        estimation = res.estimation;
+        fail = res.fal;
+        testCard.querySelector('.popup-controll__inputs-wrap_estimation').innerHTML = 'Ваша оценка: ' + estimation;
+        testCard.querySelectorAll('.popup-controll__inputs-row').forEach(function (inputs) {
+          var id = inputs.querySelector('.popup-controll-tests__radio-answer').dataset.row;
+
+          if (res.fal.includes(Number(id))) {
+            inputs.querySelector(".popup-controll-tests__radio-answer_none").classList.toggle('popup-controll-tests__radio-answer_false');
+            inputs.querySelector(".popup-controll-tests__radio-answer_none").classList.toggle('popup-controll-tests__radio-answer_none');
+          } else {
+            inputs.querySelector(".popup-controll-tests__radio-answer_none").classList.toggle('popup-controll-tests__radio-answer_true');
+            inputs.querySelector(".popup-controll-tests__radio-answer_none").classList.toggle('popup-controll-tests__radio-answer_none');
+          }
+
+          testCard.querySelector('.popup-controll__content-answer').innerHTML = 'Закрыть';
+
+          testCard.querySelector('.popup-controll__content-answer').onclick = function () {
+            location.reload();
+          };
+        });
       });
     };
   });
@@ -294,6 +418,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _popupControllAdd__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_popupControllAdd__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _openTests__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./openTests */ "./js/public/openTests.js");
 /* harmony import */ var _openTests__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_openTests__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _delete_test__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./delete-test */ "./js/public/delete-test.js");
+/* harmony import */ var _delete_test__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_delete_test__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _create_test__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./create-test */ "./js/public/create-test.js");
+/* harmony import */ var _create_test__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_create_test__WEBPACK_IMPORTED_MODULE_6__);
+
+
 
 
 

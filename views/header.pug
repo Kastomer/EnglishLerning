@@ -6,14 +6,16 @@ section.header
 
     .header__wrap(class = classType)
         .header__logo 
-            if type 
-                img(src="/images/logo.png")
-            else 
-                img(src="/images/logo_darck.png")
-        ul.header__nav
-            li.header__nav-item Тесты
-            li.header__nav-item.btn-entry__teacher(data-url=urlforscripts) Преподаватели
-            li.header__nav-item.btn-entry(data-url=urlforscripts) Личный кабинет
+            a(href="/") 
+                if type 
+                    img(src="/images/logo.png")
+                else 
+                    img(src="/images/logo_darck.png")
+
+        if urlforscripts != "/student-lk" && urlforscripts != "/teacher-lk"
+            ul.header__nav
+                li.header__nav-item.btn-entry__teacher(data-url=urlforscripts) Преподаватели
+                li.header__nav-item.btn-entry(data-url=urlforscripts) Личный кабинет
 
     .popup.popup-autorez
         .popup-fade 

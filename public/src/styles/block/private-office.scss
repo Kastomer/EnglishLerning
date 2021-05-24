@@ -71,6 +71,7 @@
 
     &__test-open-wrap {
         display: flex;
+        flex-wrap: wrap;
 
         &_control{
             flex-direction: column;

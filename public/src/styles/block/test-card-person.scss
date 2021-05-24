@@ -2,8 +2,9 @@
     background: #FAFAFA;
     border-radius: 20px;
     padding: 24px 32px;
-    max-width: 210px;
-    width: 100%;
+    // max-width: 210px;
+    width: calc(30%);
+    margin: 0 8px 8px 0;
 
     display: flex;
     flex-direction: column;

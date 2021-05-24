@@ -11,16 +11,19 @@ router.get('/:id', async function (req, res, next) {
   try {
     [teacher] = await knex.select("*").from("teachers").where({id: id});
     school = await knex.select("*").from('school');
-    [complite] = await knex.select('*').from('complite').join('students','id_student','=','students.id').join('tests','complite.id_test','=','tests.id').where('tests.id_teacher','=',id); //function(){this.on(.andOn('teachers.id','=',id)} join('teachers', 'tests.id_teacher','=','teachers.id')
-    [tests] = await knex.select('*').from('tests').where({id_teacher: id});
+    complite = await knex.select('*').from('complite').join('students','id_student','=','students.id').join('tests','complite.id_test','=','tests.id').where('tests.id_teacher','=',id); //function(){this.on(.andOn('teachers.id','=',id)} join('teachers', 'tests.id_teacher','=','teachers.id')
+    tests = await knex.select('*').from('tests').where({id_teacher: id});
     console.log(tests);
   } catch {
     console.log(error);
     next(error);
   }
+  console.log(complite);
   res.render('teacherLK',{
     teacher: teacher,
-    school: school
+    school: school,
+    complite: complite,
+    tests: tests
   });
 });
 
@@ -29,17 +32,14 @@ router.post('/newtest', async function (req, res, next) {
   try {
     let rus = req.body.rus;
     let eng = req.body.eng;
-    let {
-      name,
-      id,
-      clas
-    } = req.body;
+    let { name, id, clas } = req.body;
     let vcb = {
       eng: eng,
       rus: rus,
     }
+    console.log('qwe',vcb);
     let src = `public/tests/${name}.txt`;
-    fs.writeFileSync(src, JSON.stringify(vcb));
+    fs.writeFileSync(src, vcb);
     await knex('tests').insert([{
       name: name,
       id_teacher: id,
@@ -55,7 +55,7 @@ router.post('/newtest', async function (req, res, next) {
 
 router.post('/deletetest', async function (req, res, next) { // переделать получение путя с помощью бд по ид
   let {testId} = req.body;
-  let [{src}] = await knex.select('src').from('tests').where("id", id_test);
+  let [{src}] = await knex.select('src').from('tests').where("id", testId);
   try {
     fs.unlink(src, function(err){
       if (err) {

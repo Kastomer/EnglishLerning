@@ -17,11 +17,11 @@ block content
                 .private-office__person
                     img(src="/images/img-profile.png", alt="").private-office__person-img
                     .private-office__person-description.ml-4 
-                        p.private-office__person-FIO Иванов Иван Иванович
+                        p.private-office__person-FIO #{teacher.lostname} #{teacher.firstname} #{teacher.patronymic} 
                         p.private-office__person-text.mt-1 преподаватель
                         .private-office__person-text.mt-1 
                             img(src="/images/mail 1.png", alt="").private-office__icon
-                            p mazafaka228@mail.ru
+                            p #{teacher.email}
                 .private-office__test-open
                     p.private-office__test-open-title Редактировать тесты
                     .private-office__test-open-wrap.private-office__test-open-wrap_control.mt-4
@@ -30,13 +30,6 @@ block content
                             p.test-card-person__title Создать тесты
                             img(src="/images/edit.png", alt="").test-card-person-complite__img.test-card-person-complite__img_control
 
-                        //- .test-card-person.test-card-person_control.mr-6
-                        //-     p.test-card-person__title Загрузить тесты
-                        //-     label.test-card-person__upload
-                        //-         input(type='file').test-card-person-complite__file
-                        //-         img(src="/images/Group 67.png", alt="").test-card-person-complite__img.test-card-person-complite__img_control
-
-                        
                         .test-card-person.test-card-person_control.test-card-person_control-del.mr-6
                             p.test-card-person__title Удалить тесты
                             img(src="/images/delet.png", alt="").test-card-person-complite__img.test-card-person-complite__img_control
@@ -45,29 +38,15 @@ block content
             .private-office__test-list
                 p.private-office__test-list-title Пройденные тесты
                 .private-office__test-list-wrap
-                    .test-card-person-complite.mt-4
-                        .test-card-person-complite__description 
-                            p.test-card-person-complite__title Название теста 1
-                            p.test-card-person-complite__FIO Иванов Иван Иванович
-                        .test-card-person-complite__info
-                            img(src="/images/delet.png", alt="").p.test-card-person-complite__img
-                            p.test-card-person-complite__status Выполнен
+                    each comp in complite
+                        .test-card-person-complite.mt-4
+                            .test-card-person-complite__description 
+                                p.test-card-person-complite__title #{comp.name}
+                                p.test-card-person-complite__FIO #{comp.lostname} #{comp.firstname} #{comp.patronymic}
+                            .test-card-person-complite__info
+                                img(src="/images/delet.png", alt="").p.test-card-person-complite__img.delet__test(data-id = comp.id_test)
+                                p.test-card-person-complite__status Оценка: #{comp.estimation}
 
-                    .test-card-person-complite.mt-4
-                        .test-card-person-complite__description 
-                            p.test-card-person-complite__title Название теста 2
-                            p.test-card-person-complite__FIO Иванов Иван Иванович
-                        .test-card-person-complite__info
-                            img(src="/images/delet.png", alt="").p.test-card-person-complite__img
-                            p.test-card-person-complite__status Выполнен
-
-                    .test-card-person-complite.mt-4
-                        .test-card-person-complite__description 
-                            p.test-card-person-complite__title Название теста 3
-                            p.test-card-person-complite__FIO Иванов Иван Иванович
-                        .test-card-person-complite__info
-                            img(src="/images/delet.png", alt="").p.test-card-person-complite__img
-                            p.test-card-person-complite__status Выполнен
             .popup.popup-controll.popup-controll-create
                 .popup-fade_control 
                     .popup-controll__content 
@@ -81,12 +60,14 @@ block content
                                 img(src="/images/Arrow - Right.png", alt="").popup-controll__img
                                 input(type="text" placeholder="Ответ").popup-controll__input.popup-controll__input_answer
                         .popup-controll__btn-wrap
-                            .popup-controll__btn.btn.btn_strong
+                            .popup-controll__btn.btn.btn_strong.popup-controll__btn_create(data-id=teacher.id)
                                 p Создать  ➔
                             .popup-controll__btn.btn.btn_strong.popup-controll__btn_plas
                                 p +
                             .popup-controll__btn.btn.btn_strong.popup-controll__btn_mines
                                 p -
+                            input(type="text" placeholder="Название теста").popup-controll__input.popup-controll__input_name.mr-2
+                            input(type="text" placeholder="Класс").popup-controll__input.popup-controll__input_class
 
             .popup.popup-controll.popup-controll-delite
                 .popup-fade_delite.popup-fade_control
@@ -96,34 +77,11 @@ block content
                         .popup-close
                             p ❌
                         .popup-controll__tests-wrap.mt-7
-                            .tests-to-delite 
-                                p.tests-to-delite__name Тест №1
-                                img(src="/images/delet.png", alt="").tests-to-delite__icon
+                            each test in tests
+                                .tests-to-delite 
+                                    p.tests-to-delite__name #{test}
+                                    img(src="/images/delet.png", alt="").tests-to-delite__icon
 
-                            .tests-to-delite 
-                                p.tests-to-delite__name Тест №1
-                                img(src="/images/delet.png", alt="").tests-to-delite__icon
-
-                            .tests-to-delite 
-                                p.tests-to-delite__name Тест №1
-                                img(src="/images/delet.png", alt="").tests-to-delite__icon
-
-                            .tests-to-delite 
-                                p.tests-to-delite__name Тест №1
-                                img(src="/images/delet.png", alt="").tests-to-delite__icon
-
-                            .tests-to-delite 
-                                p.tests-to-delite__name Тест №1
-                                img(src="/images/delet.png", alt="").tests-to-delite__icon
-
-                            .tests-to-delite 
-                                p.tests-to-delite__name Тест №1
-                                img(src="/images/delet.png", alt="").tests-to-delite__icon
-
-                            .tests-to-delite 
-                                p.tests-to-delite__name Тест №1
-                                img(src="/images/delet.png", alt="").tests-to-delite__icon
-                        
 block footer
     script(src="/assets/vendor.js")
     script(src="/assets/app.js")
