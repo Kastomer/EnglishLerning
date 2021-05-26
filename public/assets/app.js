@@ -293,6 +293,34 @@ document.querySelectorAll(".popup-controll__content").forEach(function (wrap) {
 
 /***/ }),
 
+/***/ "./js/public/offer.js":
+/*!****************************!*\
+  !*** ./js/public/offer.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js");
+document.querySelectorAll(".ofer").forEach(function (el) {
+  var btn = el.querySelector(".btn-entry");
+  var popup = document.querySelector(".popup-autorez__content");
+  var popupFade = document.querySelector(".popup-fade");
+  var popupClose = document.querySelector(".popup-close");
+
+  btn.onclick = function () {
+    popup.querySelector(".popup-autorez__fields-school").style.display = "none";
+    popup.style.maxWidth = "792px";
+    $(popupFade).fadeIn();
+    window.scrollTo(0, 0);
+    popup.dataset.user = "student";
+    $(popupClose).click(function () {
+      $(this).parents('.popup-fade').fadeOut();
+      return false;
+    });
+  };
+});
+
+/***/ }),
+
 /***/ "./js/public/openTests.js":
 /*!********************************!*\
   !*** ./js/public/openTests.js ***!
@@ -422,6 +450,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _delete_test__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_delete_test__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _create_test__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./create-test */ "./js/public/create-test.js");
 /* harmony import */ var _create_test__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_create_test__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _offer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./offer */ "./js/public/offer.js");
+/* harmony import */ var _offer__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_offer__WEBPACK_IMPORTED_MODULE_7__);
+
 
 
 

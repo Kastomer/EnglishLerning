@@ -5,3 +5,4 @@ import "./popupControllAdd";
 import "./openTests";
 import "./delete-test";
 import "./create-test";
+import "./offer";
