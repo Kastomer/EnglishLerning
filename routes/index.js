@@ -50,19 +50,19 @@ router.post('/logstudent', async function (req, res, next){
 })
 
 router.post('/regteacher', async function (req, res, next){
-  const {lostname, firstname, patronymic, phone, email, password, schoolId, name, sity, streat, d} = req.body;
+  const {lostname, firstname, patronymic, phone, email, password, schoolId} = req.body;
   
   let user;
 
   try {
-    if (schoolId == null){
-      await knex("school").insert([{
-        name: name,
-        sity: sity,
-        streat: streat,
-        d: d
-      }])
-    }
+    // if (schoolId == null){
+    //   await knex("school").insert([{
+    //     name: name,
+    //     sity: sity,
+    //     streat: streat,
+    //     d: d
+    //   }])
+    // }
     await knex('teachers').insert([{
       lostname: lostname,
       firstname: firstname,

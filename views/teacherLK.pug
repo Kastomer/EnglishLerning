@@ -44,7 +44,7 @@ block content
                                 p.test-card-person-complite__title #{comp.name}
                                 p.test-card-person-complite__FIO #{comp.lostname} #{comp.firstname} #{comp.patronymic}
                             .test-card-person-complite__info
-                                img(src="/images/delet.png", alt="").p.test-card-person-complite__img.delet__test(data-id = comp.id_test)
+                                img(src="/images/delet.png", alt="").p.test-card-person-complite__img.delete-stud-test(data-id-test = comp.id_test data-id-student = comp.id_student)
                                 p.test-card-person-complite__status Оценка: #{comp.estimation}
 
             .popup.popup-controll.popup-controll-create
@@ -79,8 +79,8 @@ block content
                         .popup-controll__tests-wrap.mt-7
                             each test in tests
                                 .tests-to-delite 
-                                    p.tests-to-delite__name #{test}
-                                    img(src="/images/delet.png", alt="").tests-to-delite__icon
+                                    p.tests-to-delite__name #{test.name}
+                                    img(src="/images/delet.png", alt="").tests-to-delite__icon.delet__test(data-id = test.id)
 
 block footer
     script(src="/assets/vendor.js")

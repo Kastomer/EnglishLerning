@@ -179,16 +179,6 @@ document.querySelectorAll(".popup-autorez__content").forEach(function (content) 
     regisWrap.style.display = "flex";
     document.querySelector(".popup-autorez__header").querySelector("p").innerHTML = "Регистрация";
   };
-
-  btnAddSchool.onclick = function () {
-    schoolSelectedContent.style.display = "none";
-    schoolAddContent.style.display = "flex";
-  };
-
-  btnBackSchool.onclick = function () {
-    schoolSelectedContent.style.display = "flex";
-    schoolAddContent.style.display = "none";
-  };
 });
 
 /***/ }),
@@ -234,6 +224,33 @@ document.querySelectorAll('.popup-controll__content').forEach(function (creates)
         clas: clas,
         id: id
       })
+    }).then(function () {
+      location.reload();
+    });
+  };
+});
+
+/***/ }),
+
+/***/ "./js/public/delete-stud-test.js":
+/*!***************************************!*\
+  !*** ./js/public/delete-stud-test.js ***!
+  \***************************************/
+/***/ (() => {
+
+document.querySelectorAll('.delete-stud-test').forEach(function (btn) {
+  btn.onclick = function () {
+    fetch('/teacher-lk/deletecomtest', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify({
+        testId: btn.dataset.idTest,
+        studenId: btn.dataset.idStudent
+      })
+    }).then(function () {
+      return location.reload();
     });
   };
 });
@@ -444,14 +461,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hendlAddQuestions__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_hendlAddQuestions__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _popupControllAdd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./popupControllAdd */ "./js/public/popupControllAdd.js");
 /* harmony import */ var _popupControllAdd__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_popupControllAdd__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _openTests__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./openTests */ "./js/public/openTests.js");
-/* harmony import */ var _openTests__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_openTests__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _delete_test__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./delete-test */ "./js/public/delete-test.js");
-/* harmony import */ var _delete_test__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_delete_test__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _create_test__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./create-test */ "./js/public/create-test.js");
-/* harmony import */ var _create_test__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_create_test__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _offer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./offer */ "./js/public/offer.js");
-/* harmony import */ var _offer__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_offer__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _delete_stud_test__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./delete-stud-test */ "./js/public/delete-stud-test.js");
+/* harmony import */ var _delete_stud_test__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_delete_stud_test__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _openTests__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./openTests */ "./js/public/openTests.js");
+/* harmony import */ var _openTests__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_openTests__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _delete_test__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./delete-test */ "./js/public/delete-test.js");
+/* harmony import */ var _delete_test__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_delete_test__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _create_test__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./create-test */ "./js/public/create-test.js");
+/* harmony import */ var _create_test__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_create_test__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _offer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./offer */ "./js/public/offer.js");
+/* harmony import */ var _offer__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_offer__WEBPACK_IMPORTED_MODULE_8__);
+
 
 
 

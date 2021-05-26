@@ -129,13 +129,5 @@ document.querySelectorAll(".popup-autorez__content").forEach(content =>{
         document.querySelector(".popup-autorez__header").querySelector("p").innerHTML = "Регистрация";
     }
 
-    btnAddSchool.onclick = () => {
-        schoolSelectedContent.style.display = "none";
-        schoolAddContent.style.display = "flex";
-    }
-
-    btnBackSchool.onclick = () => {
-        schoolSelectedContent.style.display = "flex";
-        schoolAddContent.style.display = "none";
-    }
+ 
 })

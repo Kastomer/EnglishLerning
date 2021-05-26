@@ -33,6 +33,6 @@ document.querySelectorAll('.popup-controll__content').forEach(creates => {
         clas: clas,
         id: id
       })
-    })
+    }).then(() => {location.reload()})
   }
 })
