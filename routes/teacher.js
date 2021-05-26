@@ -33,13 +33,16 @@ router.post('/newtest', async function (req, res, next) {
     let rus = req.body.rus;
     let eng = req.body.eng;
     let { name, id, clas } = req.body;
-    let vcb = {
-      eng: eng,
-      rus: rus,
+    let vcb = [];
+    for (let i = 0; i < eng.length; i++) {
+      if (eng[i] != undefined && rus[i] != undefined) {
+        vcb.push([ eng[i], rus[i]]);
+      }
     }
     console.log('qwe',vcb);
     let src = `public/tests/${name}.txt`;
-    fs.writeFileSync(src, vcb);
+    fs.writeFileSync(src, JSON.stringify(vcb));
+    vcb = [];
     await knex('tests').insert([{
       name: name,
       id_teacher: id,
@@ -52,6 +55,16 @@ router.post('/newtest', async function (req, res, next) {
   }
   res.end();
 });
+
+router.post('/deletecomtest', async function (req, res, next) { // переделать получение путя с помощью бд по ид
+  let {testId, studenId} = req.body;
+  try {
+    await knex('complite').where({id_test: testId}).where({id_student: studenId}).del();
+  } catch (error) {
+    next(error);
+  }
+  res.end();
+})
 
 router.post('/deletetest', async function (req, res, next) { // переделать получение путя с помощью бд по ид
   let {testId} = req.body;

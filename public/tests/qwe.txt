@@ -1,1 +1,1 @@
-{"eng":["qwe","qwe","qwe"],"rus":["123","123","qwe"]}
+[["qwe","qwe"],["qwe","qwe"],["qwe","qwe"],["qwe","qwe"],["qwe","qwe"],["qwe","qwe"],["qwe","qwe"]]
