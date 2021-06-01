@@ -114,6 +114,13 @@ document.querySelectorAll(".popup-autorez__content").forEach(function (content) 
       };
     }
 
+    var policy = content.querySelector(".policy").querySelector('input[type=checkbox]');
+
+    if (policy.checked == false) {
+      alert("Примите пользовательское соглашение!");
+      return;
+    }
+
     fetch(url, {
       method: 'POST',
       headers: {

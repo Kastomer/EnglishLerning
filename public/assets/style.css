@@ -1013,6 +1013,14 @@
   background: #c5c5c5;
 }
 
+.policy {
+  margin: 16px auto 0;
+}
+.policy__title {
+  margin-left: 8px;
+  text-decoration: underline;
+}
+
 * {
   margin: 0;
   padding: 0;
