@@ -8,6 +8,9 @@ router.get('/:id', async function (req, res, next) {
   // res.render('teacherLK');
   const id = req.params.id;
   let teacher, school, complite, tests;
+  if (req.session.nameUser != `teacher:${id}`) {
+    res.redirect("/");
+  }
   try {
     [teacher] = await knex.select("*").from("teachers").where({id: id});
     school = await knex.select("*").from('school');

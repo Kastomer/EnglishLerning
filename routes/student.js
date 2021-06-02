@@ -7,6 +7,9 @@ var router = express.Router();
 router.get('/:id', async function(req, res, next) {
   const id = req.params.id;
   let student, school, complite, test, content, engrus = [], eng = [], g = 0;
+  if (req.session.nameUser != `student:${id}`) {
+    res.redirect("/");
+  }
   try {
     [student] = await knex.select("*").from("students").where({id: id});
     school = await knex.select("*").from('school');

@@ -1,4 +1,5 @@
 const knex = require("../db.js");
+const bcrypt = require('bcrypt');
 var session = require('express-session');
 var express = require('express');
 var router = express.Router();
@@ -16,33 +17,36 @@ router.get('/', async function(req, res, next) {
 
 router.post('/regstudent', async function (req, res, next){
   const {lostname, firstname, patronymic, phone, email, password, classRoom, schoolId} = req.body;
-  let studentId;
+  let studentId, saltRounds = 10;
   try {
-    await knex('students').insert([{
-      lostname: lostname,
-      firstname: firstname,
-      patronymic: patronymic,
-      phone: phone,
-      email: email,
-      password: password,
-      class : classRoom,
-      id_school: schoolId
-    }]);
-    [studentId]= await knex.select("id").from("students").where({phone: phone});
-    req.session.nameUser = "student";
+    await bcrypt.hash(password, saltRounds, async function(err, hash) {  
+      await knex('students').insert([{
+        lostname: lostname,
+        firstname: firstname,
+        patronymic: patronymic,
+        phone: phone,
+        email: email,
+        password: password,
+        class : classRoom,
+        id_school: schoolId
+      }]);
+      [studentId]= await knex.select("id").from("students").where({phone: phone});
+      req.session.nameUser = `student:${studentId.id}`;
+      res.send({route: `/student-lk/${studentId.id}`}).end();
+    });
   } catch (error) {
     console.log(error);
     next(error);
   }
-  res.send({route: `/student-lk/${studentId.id}`}).end();
+  
 });
 
 router.post('/logstudent', async function (req, res, next){
   const {login, password} = req.body;
-  const [user] = await knex.select('*').from('students').where('email', login).orWhere({'phone' : login});
-
-  if (user && password == user.password) {
-    req.session.nameUser = "student";
+  const [user] = await knex.select('*').from('students').where('email', login).orWhere('phone' , login);
+  console.log(bcrypt.compare(password, user.password));
+  if (await bcrypt.compare(password, user.password)) {
+    req.session.nameUser = `student:${user.id}`;
     res.send({route: `/student-lk/${user.id}`}).end();
   }else {
     res.status(400).end();
@@ -51,30 +55,24 @@ router.post('/logstudent', async function (req, res, next){
 
 router.post('/regteacher', async function (req, res, next){
   const {lostname, firstname, patronymic, phone, email, password, schoolId} = req.body;
-  
-  let user;
-
+  let user, saltRounds = 10;
   try {
-    // if (schoolId == null){
-    //   await knex("school").insert([{
-    //     name: name,
-    //     sity: sity,
-    //     streat: streat,
-    //     d: d
-    //   }])
-    // }
-    await knex('teachers').insert([{
-      lostname: lostname,
-      firstname: firstname,
-      patronymic: patronymic,
-      phone: phone,
-      email: email,
-      password: password,
-      id_school: schoolId
-    }]);
-    req.session.nameUser = "teacher";
-    [user]= await knex.select("id").from("teachers").where({phone: phone});
-    res.send({route: `/teacher-lk/${user.id}`}).end();
+    await bcrypt.hash(password, saltRounds, async function(err, hash) {  
+      console.log(password, "HESH")
+      await knex('teachers').insert([{
+        lostname: lostname,
+        firstname: firstname,
+        patronymic: patronymic,
+        phone: phone,
+        email: email,
+        password: hash,
+        id_school: schoolId
+      }]);
+      console.log(password);
+      [user]= await knex.select("id").from("teachers").where({phone: phone});
+      req.session.nameUser = `teacher:${user.id}`;
+      res.send({route: `/teacher-lk/${user.id}`}).end();
+    });
   } catch (error) {
     console.log(error);
     next(error);
@@ -83,10 +81,9 @@ router.post('/regteacher', async function (req, res, next){
 
 router.post('/logteacher', async function (req, res, next){
   const {login, password} = req.body;
-  const [user] = await knex.select('*').from('teachers').where('email', login).orWhere({'phone' : login});
-
-  if (user && password == user.password) {
-    req.session.nameUser = "teacher";
+  const [user] = await knex.select('*').from('teachers').where('email', login).orWhere('phone' , login);
+  if (await bcrypt.compare(password, user.password)) {
+    req.session.nameUser = `teacher:${user.id}`;
     res.send({route: `/teacher-lk/${user.id}`}).end();
   }else {
     res.status(400).end();

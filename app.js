@@ -4,9 +4,7 @@ var path = require('path');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var indexRouter = require('./routes/index');
-const testsRouter = require("./routes/tests");
 const studentRouter = require("./routes/student");
 const teacherRouter = require("./routes/teacher");
 
@@ -30,7 +28,6 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use("/tests",testsRouter);
 app.use("/student-lk",studentRouter);
 app.use("/teacher-lk",teacherRouter);
 
