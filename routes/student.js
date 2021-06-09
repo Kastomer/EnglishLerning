@@ -1,23 +1,19 @@
 var express = require('express');
-const knex = require('../db');
+const knex = require('../database/db');
 var fs = require('fs');
 var router = express.Router();
 
-
 router.get('/:id', async function(req, res, next) {
   const id = req.params.id;
-  let student, school, complite, test, content, engrus = [], eng = [], g = 0;
+  let student, complite, test, content, engrus = [], eng = [], g = 0;
   if (req.session.nameUser != `student:${id}`) {
     res.redirect("/");
   }
   try {
     [student] = await knex.select("*").from("students").where({id: id});
-    school = await knex.select("*").from('school');
     complite = await knex.select('*').from('complite').join('tests','id_test','tests.id').where({id_student: id});
-    test = await knex.select('*').from('tests').leftJoin('complite','tests.id','id_test').where({id_test: null}).where({id_teacher: student.id_teacher}).where('class', student.class);
-    console.log(test);
+    test = await knex.select('*').from('tests').leftJoin('complite','tests.id','id_test').where({id_test: null}).where('class', student.class);
   } catch {
-    console.log(error);
     next(error);
   }
   test.forEach(test =>{
@@ -39,12 +35,9 @@ router.get('/:id', async function(req, res, next) {
     };
     test.eng = eng;
     eng = [];
-    console.log("ХУЙ",test.eng);
   })
-  console.log(test);
   res.render('studentLK',{
     student: student,
-    school: school,
     tests: test,
     compliteTest: complite
   });
@@ -74,9 +67,6 @@ router.post('/comtest', async function(req, res, next) {
     if (engrus[i] != result[x]) fal.push(x+1); else g++;
   }
   if( g/(engrus.length / 2)>= 0.90) estimation = 5; else if(g/(engrus.length / 2)>= 0.75) estimation  = 4; else if (g/(engrus.length / 2)>= 0.60) estimation = 3; else estimation = 2;  
-  console.log(engrus, result);
-  console.log(fal, g, estimation)// отправлять на фронт где ощибки и оценку
-
   await knex('complite').insert([{
     id_student: id,
     id_test: id_test,

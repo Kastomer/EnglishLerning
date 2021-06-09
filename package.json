@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon --inspect ./bin/www"
+    "start": "nodemon --inspect ./bin/www",
+    "migrate": "npx knex migrate:latest --knexfile database/knexfile.js",
+    "down": "npx knex migrate:down --knexfile database/knexfile.js"
   },
   "dependencies": {
     "@popperjs/core": "^2.6.0",

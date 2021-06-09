@@ -31,21 +31,21 @@ section.header
                     input(type="password" placeholder="Пароль" name="pas").popup-autorez__input
                     input(type="password" placeholder="Повтор пароля" name="pas_two").popup-autorez__input
                     .popup-autorez__fields-school
-                        .popup-autorez__fields-school-selected
-                            select.popup-autorez__fields-school-select
-                                each s in school
-                                    option(value=s.id) #{s.name} г.#{s.city} ул.#{s.street} д#{s.house} 
+                        //- .popup-autorez__fields-school-selected
+                            //- select.popup-autorez__fields-school-select
+                            //-     each s in school
+                            //-         option(value=s.id) #{s.name} г.#{s.city} ул.#{s.street} д#{s.house} 
                     
-                        .popup-autorez__fields-school-add
-                            input(type="text" placeholder="login" name="login").popup-autorez__input
-                            input(type="text" placeholder="login" name="login").popup-autorez__input
-                            input(type="text" placeholder="login" name="login").popup-autorez__input
-                            input(type="text" placeholder="login" name="login").popup-autorez__input
-                            .popup-autorez__fields-school-btn_back.btn.btn_strong
+                        //- .popup-autorez__fields-school-add
+                        //-     input(type="text" placeholder="login" name="login").popup-autorez__input
+                        //-     input(type="text" placeholder="login" name="login").popup-autorez__input
+                        //-     input(type="text" placeholder="login" name="login").popup-autorez__input
+                        //-     input(type="text" placeholder="login" name="login").popup-autorez__input
+                        //-     .popup-autorez__fields-school-btn_back.btn.btn_strong
                                 p ❮
                     .policy
                         input(type="checkbox", name="")
-                        a(href="./policy.txt" download).policy__title согласие на обработку личных данных
+                        a(href="policy.txt"  download = "").policy__title согласие на обработку личных данных
                     
                 form.popup-autorez__fields_authorization
                     input(type="text" placeholder="login" name="login").popup-autorez__input_authorization

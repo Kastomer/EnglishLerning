@@ -6,7 +6,7 @@ const knex = require('knex')({
         password : 'Awals321',
         database : 'mydb',
         insecureAuth : true
-    }
+    },
   });
 
 module.exports = knex;
