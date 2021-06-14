@@ -78,14 +78,15 @@
     }
 
     &__input {
-        opacity: 0.2;
-        border: 1px solid #2A2A30;
+        // opacity: 0.2;
+        border: 1px solid #2a2a3054;
         box-sizing: border-box;
         border-radius: 4px;
         height: 52px;
         width: 350px;
         margin-top: 12px;
         padding: 0 0 0 23px;
+        outline: none;
 
         &:first-child {
             flex-grow: 2;

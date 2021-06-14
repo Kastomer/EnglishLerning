@@ -24,7 +24,7 @@ document.querySelectorAll(".header").forEach(function (hed) {
 
   btn.onclick = function () {
     if (url === "/") {
-      popup.querySelector(".popup-autorez__fields-school").style.display = "none";
+      // popup.querySelector(".popup-autorez__fields-school").style.display = "none";
       popup.style.maxWidth = "792px";
       $(popupFade).fadeIn();
       window.scrollTo(0, 0);
@@ -40,8 +40,8 @@ document.querySelectorAll(".header").forEach(function (hed) {
 
   btnTeacher.onclick = function () {
     if (url === "/") {
-      popup.querySelector(".popup-autorez__fields-school").style.display = "flex";
-      popup.style.maxWidth = "1200px";
+      // popup.querySelector(".popup-autorez__fields-school").style.display = "flex";
+      popup.style.maxWidth = "792px";
       $(popupFade).fadeIn();
       window.scrollTo(0, 0);
       popup.dataset.user = "teacher";

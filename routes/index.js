@@ -8,6 +8,10 @@ router.get('/', async function(req, res, next) {
     res.render('index');
 });
 
+router.get('/policy', async function(req, res, next) {
+  res.render('policy');
+});
+
 router.post('/regstudent', async function (req, res, next){
   const {lostname, firstname, patronymic, phone, email, password, classRoom} = req.body;
   let [user] = await knex.select('email','phone').from('students'), saltRounds = 10, mes;
