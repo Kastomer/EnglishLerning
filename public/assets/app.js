@@ -331,7 +331,7 @@ document.querySelectorAll(".ofer").forEach(function (el) {
   var popupClose = document.querySelector(".popup-close");
 
   btn.onclick = function () {
-    popup.querySelector(".popup-autorez__fields-school").style.display = "none";
+    // popup.querySelector(".popup-autorez__fields-school").style.display = "none";
     popup.style.maxWidth = "792px";
     $(popupFade).fadeIn();
     window.scrollTo(0, 0);
