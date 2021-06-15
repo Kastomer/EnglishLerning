@@ -109,8 +109,8 @@ document.querySelectorAll(".popup-autorez__content").forEach(function (content) 
         patronymic: regisContent.FIO.value.split(' ')[2],
         phone: regisContent.phone.value,
         email: regisContent.mail.value,
-        password: password,
-        schoolId: content.querySelector(".popup-autorez__fields-school-select").value
+        password: password // schoolId: content.querySelector(".popup-autorez__fields-school-select").value 
+
       };
     }
 

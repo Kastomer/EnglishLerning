@@ -54,7 +54,7 @@ document.querySelectorAll(".popup-autorez__content").forEach(content =>{
                 phone: regisContent.phone.value,
                 email: regisContent.mail.value,
                 password: password,
-                schoolId: content.querySelector(".popup-autorez__fields-school-select").value 
+                // schoolId: content.querySelector(".popup-autorez__fields-school-select").value 
             }
         }
 
